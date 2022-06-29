@@ -14,9 +14,9 @@
       <input class="SearchBox-Index" placeholder="Search"/>
     </div>
     <div class="Catagory-Zone">
-      <button class="SelectedButtonCss">All Product</button>
-      <button class="NonSelectedButton">Hot Glue</button>
-      <button class="NonSelectedButton">Latex Glue</button>
+      <button :class="activeButton1" @click="setButtonActive1">All Product</button>
+      <button :class="activeButton2" @click="setButtonActive2">Hot Glue</button>
+      <button :class="activeButton3" @click="setButtonActive3">Latex Glue</button>
     </div>
     <div class="Card-Body">
       <productCard1/>
@@ -29,6 +29,7 @@
 
 import productCard1 from "./ProductCard/productCard1.vue"
 
+
 export default {
   name: 'MainPage',
   components: {
@@ -37,12 +38,26 @@ export default {
   data(){
     return{
       debug:[1,2],
-      activeButton: "SelectedButtonCss",
+      activeButton1: "SelectedButtonCss",
+      activeButton2: "NonSelectedButton",
+      activeButton3: "NonSelectedButton"
     }
   },
   methods:{
-    setActiveButton(){
-      this.activeButton = "";
+    setButtonActive1(){
+      this.activeButton1 = "SelectedButtonCss";
+      this.activeButton2 = "NonSelectedButton";
+      this.activeButton3 = "NonSelectedButton";
+    },
+    setButtonActive2(){
+      this.activeButton1 = "NonSelectedButton";
+      this.activeButton2 = "SelectedButtonCss";
+      this.activeButton3 = "NonSelectedButton";
+    },
+    setButtonActive3(){
+      this.activeButton1 = "NonSelectedButton";
+      this.activeButton2 = "NonSelectedButton";
+      this.activeButton3 = "SelectedButtonCss";
     }
   }
 }
@@ -116,11 +131,14 @@ export default {
     background: rgb(135, 169, 255);
     border: none;
     font-weight: bold;
+    font-size: 16px;
+    color: white;
   }
 
   .NonSelectedButton{
     background: none;
     border: none;
+    font-size: 14px;
   }
 
   .Card-Body{

@@ -1,18 +1,21 @@
 <template>
+  <NavigationBar/>
   <MainPage/>
 </template>
 
 <script>
 import MainPage from './components/MainPage.vue'
+import NavigationBar from './components/Navigation/navigation.vue'
 
 export default {
   name: 'App',
   components: {
-    MainPage
+    MainPage,
+    NavigationBar
   }
 }
 </script>
 
 <style>
-
+  
 </style>
