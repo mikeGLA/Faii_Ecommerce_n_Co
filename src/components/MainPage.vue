@@ -14,13 +14,12 @@
       <input class="SearchBox-Index" placeholder="Search"/>
     </div>
     <div class="Catagory-Zone">
-      <h3>Adhesive Product</h3>
+      <button class="SelectedButtonCss">All Product</button>
+      <button class="NonSelectedButton">Hot Glue</button>
+      <button class="NonSelectedButton">Latex Glue</button>
     </div>
     <div class="Card-Body">
-      <div><productCard1/></div>
-      <div><productCard1/></div>
-      <div><productCard1/></div>
-      <div><productCard1/></div>
+      <productCard1/>
     </div>
   </div>
 </template>
@@ -34,6 +33,17 @@ export default {
   name: 'MainPage',
   components: {
     productCard1
+  },
+  data(){
+    return{
+      debug:[1,2],
+      activeButton: "SelectedButtonCss",
+    }
+  },
+  methods:{
+    setActiveButton(){
+      this.activeButton = "";
+    }
   }
 }
 </script>
@@ -93,12 +103,32 @@ export default {
     margin-right: 30px;
   }
 
+  .Catagory-Zone{
+    margin-top: 15px;
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    text-align: center;
+  }
+
+  .SelectedButtonCss{
+    background: rgb(135, 169, 255);
+    border: none;
+    font-weight: bold;
+  }
+
+  .NonSelectedButton{
+    background: none;
+    border: none;
+  }
+
   .Card-Body{
     background: rgb(242, 242, 242);
     margin-left: 10px;
     margin-right: 10px;
     /* border: 1px solid red; */
-    display: inline-flex;
+    display:flex;
     flex-wrap: wrap;
     flex-direction: row;
     justify-content: space-evenly;

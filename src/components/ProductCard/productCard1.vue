@@ -1,10 +1,10 @@
 <template>
-    <div class="Card-Index">
+    <div class="Card-Index" v-for="(NamePro) in ProductData" :key="NamePro">
         <div class="Product-Picture">
             <img :src="require('../../assets/TestCard.jpg')" :width="120" :height="120">
         </div>
-        <div class="Product-Name">Shiba Doggi</div>
-        <div class="Product-Price-Sold">696969 Baht</div>
+        <div class="Product-Name">{{NamePro.ProductName}}</div>
+        <div class="Product-Price-Sold">{{NamePro.ProductPrice}} Baht</div>
         <div class="Product-Incart-Count">{{counting}} In Cart</div>
         <button @click="addCart()" class="Product-Add">Add</button>
         <button @click="RemoveCart()" class="Product-Rem">Remove</button>
@@ -18,6 +18,28 @@ export default {
     data(){
       return{
         counting: 0,
+        ProductData:[
+            {
+                ProductName:"Hot Glue1",
+                ProductPrice: 40
+            },
+            {
+                ProductName:"Hot Glue2",
+                ProductPrice: 35
+            },
+            {
+                ProductName:"Hot Glue3",
+                ProductPrice: 30
+            },
+            {
+                ProductName:"Hot Glue4",
+                ProductPrice: 25
+            },
+            {
+                ProductName:"Hot Glue5",
+                ProductPrice: 20
+            }
+        ]
       }
     },
     methods:{
@@ -28,6 +50,7 @@ export default {
             this.counting--
         }
     },
+    
 }
 
 </script>
