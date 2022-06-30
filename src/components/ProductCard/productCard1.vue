@@ -5,7 +5,6 @@
         </div>
         <div class="Product-Name">{{NamePro.ProductName}}</div>
         <div class="Product-Price-Sold">{{NamePro.ProductPrice}} Baht</div>
-        <div class="Product-Incart-Count">{{counting}} In Cart</div>
         <button @click="addCart()" class="Product-Add">Add</button>
         <button @click="RemoveCart()" class="Product-Rem">Remove</button>
     </div>
@@ -17,34 +16,33 @@ export default {
     name: 'productCard1',
     data(){
       return{
-        counting: 0,
         ProductData:[
             {
                 ProductName:"Hot Glue1",
-                ProductPrice: 40
+                ProductPrice: 40,
             },
             {
                 ProductName:"Hot Glue2",
-                ProductPrice: 35
+                ProductPrice: 35,
             },
             {
                 ProductName:"Hot Glue3",
-                ProductPrice: 30
+                ProductPrice: 30,
             },
             {
                 ProductName:"Hot Glue4",
-                ProductPrice: 25
+                ProductPrice: 25,
             },
             {
                 ProductName:"Hot Glue5",
-                ProductPrice: 20
+                ProductPrice: 20,
             }
         ]
       }
     },
     methods:{
         addCart(){
-            this.counting++
+            this.ProductData.counting++
         },
         RemoveCart(){
             this.counting--

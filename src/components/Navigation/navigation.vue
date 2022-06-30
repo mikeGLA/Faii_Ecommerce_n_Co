@@ -1,22 +1,22 @@
 <template>
     <div class="NavigationBar-Index">
         <div class="NavigationBar-Home">
-            <button>
-                <img :src="require('../../assets/Home_White.png')" :width="40" :height="40">
+            <button class="HomeButton">
+                <img :src="require('../../assets/Home_Black.png')" :width="40" :height="40">
             </button>
         </div>
         <div class="NavigationBar-Cart">
-            <button>
+            <button class="CartButton">
                 <img :src="require('../../assets/ShoppingCart_White.png')" :width="40" :height="40">
             </button>
         </div>
         <div class="NavigationBar-OrderCheck">
-            <button>
+            <button class="OrderCheckButton">
                 <img :src="require('../../assets/OrderTrack_White.png')" :width="40" :height="40">
             </button>
         </div>
         <div class="NavigationBar-AboutUs">
-            <button>
+            <button class="AboutUsButton">
                 <img :src="require('../../assets/AboutUs_White.png')" :width="40" :height="40">
             </button>
         </div>
@@ -26,8 +26,17 @@
 <script>
 
 export default {
-    name: 'navigationBar'
-    
+    name: 'navigationBar',
+    data(){
+        return{
+
+        }
+    },
+    methods:{
+        debugButton(){
+            console.log("YakYedHee")
+        },
+    }
 }
 </script>
 
@@ -36,8 +45,8 @@ export default {
         display: flex;
         /* flex-direction: row; */
         /* justify-content: space-between; */
-        height: 60px;
-        border: 1px solid red;
+        height: 55px;
+        /* border: 1px solid red; */
         background: white;
         box-shadow: 0px 4px 20px rgba(0,0,0,0.08);
         position: fixed;
@@ -53,11 +62,21 @@ export default {
         margin: auto;
     }
 
+    .HomeButton{
+        border: none;
+        background: none;
+    }
+
     .NavigationBar-Cart{
         /* border: 1px solid green; */
         /* width: 70px;
         text-align: center; */
         margin: auto;
+    }
+
+    .CartButton{
+        border: none;
+        background: none;
     }
 
     .NavigationBar-OrderCheck{
@@ -67,11 +86,21 @@ export default {
         margin: auto;
     }
 
+    .OrderCheckButton{
+        border: none;
+        background: none;
+    }
+
     .NavigationBar-AboutUs{
         /* border: 1px solid purple; */
         /* width: 70px;
         text-align: center; */
         margin: auto;
+    }
+
+    .AboutUsButton{
+        border: none;
+        background: none;
     }
 
 
