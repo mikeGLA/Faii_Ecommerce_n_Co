@@ -6,7 +6,9 @@
         <p>Customer!</p>
       </div>
       <div class="TopBar-Cart">
-        <img :src="require('../assets/ShoppingCart.png')" :width="30" :height="30"/>
+        <button @click="debugButton"> 
+          <img :src="require('../assets/ShoppingCart.png')" :width="30" :height="30"/>
+        </button>
       </div>
     </div>
     <div class="Main-SearchBox">
@@ -44,6 +46,9 @@ export default {
     }
   },
   methods:{
+    debugButton(){
+      console.log("YakYedHee")
+    },
     setButtonActive1(){
       this.activeButton1 = "SelectedButtonCss";
       this.activeButton2 = "NonSelectedButton";
@@ -66,7 +71,7 @@ export default {
 <style>
   .Main-Index{
     text-align: center;
-    height: 500px;
+    height: 900px;
     /* border: 1px solid red; */
   }
 
@@ -90,6 +95,11 @@ export default {
     width: 100px;
     text-align: right;
     margin-top: 12.5px;
+  }
+
+  .TopBar-Cart > button{
+    border: none;
+    background: none;
   }
 
   .Main-SearchBox{
