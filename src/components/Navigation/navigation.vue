@@ -1,40 +1,74 @@
 <template>
     <div class="NavigationBar-Index">
         <div class="NavigationBar-Home">
-            <button class="HomeButton">
-                <img :src="require('../../assets/Home_Black.png')" :width="40" :height="40">
+            <button :class="HomeCssControl" @click="HomeButtonClicked">
+                <router-link to="home">
+                    <img :src="require('@/assets/Home_White.png')" :width="40" :height="40">
+                </router-link>
             </button>
         </div>
         <div class="NavigationBar-Cart">
-            <button class="CartButton">
-                <img :src="require('../../assets/ShoppingCart_White.png')" :width="40" :height="40">
+            <button :class="CartCssControl" @click="CartButtonClicked">
+                <router-link to="/shoppingcart">
+                    <img :src="require('@/assets/ShoppingCart_White.png')" :width="40" :height="40">
+                </router-link>
             </button>
         </div>
         <div class="NavigationBar-OrderCheck">
-            <button class="OrderCheckButton">
-                <img :src="require('../../assets/OrderTrack_White.png')" :width="40" :height="40">
+            <button :class="OrderCssControl" @click="OrderButtonClicked">
+                <router-link to="/ordercheck">
+                    <img :src="require('../../assets/OrderTrack_White.png')" :width="40" :height="40">
+                </router-link>
             </button>
         </div>
         <div class="NavigationBar-AboutUs">
-            <button class="AboutUsButton">
-                <img :src="require('../../assets/AboutUs_White.png')" :width="40" :height="40">
+            <button :class="AboutCssControl" @click="AboutButtonClicked">
+                <router-link to="/aboutus">
+                    <img :src="require('../../assets/AboutUs_White.png')" :width="40" :height="40">
+                </router-link>
             </button>
         </div>
     </div>
 </template>
 
 <script>
-
 export default {
     name: 'navigationBar',
     data(){
         return{
-
+            HomeCssControl: "HomeSelected",
+            CartCssControl: "CartButton",
+            OrderCssControl: "OrderCheckButton",
+            AboutCssControl: "AboutUsButton",
         }
     },
     methods:{
         debugButton(){
             console.log("YakYedHee")
+        },
+        HomeButtonClicked(){
+            this.HomeCssControl= "HomeSelected",
+            this.CartCssControl= "CartButton",
+            this.OrderCssControl= "OrderCheckButton",
+            this.AboutCssControl= "AboutUsButton"
+        },
+        CartButtonClicked(){
+            this.HomeCssControl= "HomeButton",
+            this.CartCssControl= "CartSelected",
+            this.OrderCssControl= "OrderCheckButton",
+            this.AboutCssControl= "AboutUsButton"
+        },
+        OrderButtonClicked(){
+            this.HomeCssControl= "HomeButton",
+            this.CartCssControl= "CartButton",
+            this.OrderCssControl= "OrderCheckSelect",
+            this.AboutCssControl= "AboutUsButton"
+        },
+        AboutButtonClicked(){
+            this.HomeCssControl= "HomeButton",
+            this.CartCssControl= "CartButton",
+            this.OrderCssControl= "OrderCheckButton",
+            this.AboutCssControl= "AboutUsSelect"
         },
     }
 }
@@ -67,6 +101,11 @@ export default {
         background: none;
     }
 
+    .HomeSelected{
+        background: none;
+        border: 2px solid black;
+    }
+
     .NavigationBar-Cart{
         /* border: 1px solid green; */
         /* width: 70px;
@@ -77,6 +116,11 @@ export default {
     .CartButton{
         border: none;
         background: none;
+    }
+
+    .CartSelected{
+        background: none;
+        border: 2px solid black;
     }
 
     .NavigationBar-OrderCheck{
@@ -91,6 +135,11 @@ export default {
         background: none;
     }
 
+    .OrderCheckSelect{
+        background: none;
+        border: 2px solid black;
+    }
+
     .NavigationBar-AboutUs{
         /* border: 1px solid purple; */
         /* width: 70px;
@@ -102,6 +151,15 @@ export default {
         border: none;
         background: none;
     }
+
+    .AboutUsSelect{
+        background: none;
+        border: 2px solid black;
+    }
+
+    /* .AboutUsButton > img{
+        filter: brightness(0) saturate(100%) invert(90%) sepia(28%) saturate(2%) hue-rotate(330deg) brightness(113%) contrast(101%);
+    } */
 
 
 </style>

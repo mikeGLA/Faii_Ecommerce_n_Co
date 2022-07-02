@@ -12,10 +12,12 @@
 
 <script>
 
+
 export default {
     name: 'productCard1',
     data(){
       return{
+        inCartCounting: 0,
         ProductData:[
             {
                 ProductName:"Hot Glue1",
@@ -37,15 +39,15 @@ export default {
                 ProductName:"Hot Glue5",
                 ProductPrice: 20,
             }
-        ]
+        ],
       }
     },
     methods:{
         addCart(){
-            this.ProductData.counting++
+            this.$emit('inCartCounting', 0)
         },
         RemoveCart(){
-            this.counting--
+            this.$emit('inCartCounting', 0)
         }
     },
     
