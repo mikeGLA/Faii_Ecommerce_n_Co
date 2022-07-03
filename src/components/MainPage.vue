@@ -27,10 +27,7 @@
 </template>
 
 <script>
-// import ShoppingCart from "../assets/ShoppingCart.png"
-
 import productCard1 from "./ProductCard/productCard1.vue"
-
 
 export default {
   name: 'MainPage',
