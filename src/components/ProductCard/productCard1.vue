@@ -44,10 +44,10 @@ export default {
     },
     methods:{
         addCart(){
-            this.$emit('inCartCounting', 0)
+            this.$store.commit("increment")
         },
         RemoveCart(){
-            this.$emit('inCartCounting', 0)
+            this.$store.commit("decrement")
         }
     },
     

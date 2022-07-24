@@ -9,6 +9,7 @@
         <button @click="debugButton"> 
           <img :src="require('../assets/ShoppingCart.png')" :width="30" :height="30"/>
         </button>
+        <div class="CartCount">{{this.$store.state.counter}}</div>
       </div>
     </div>
     <div class="Main-SearchBox">
@@ -92,11 +93,24 @@ export default {
     width: 100px;
     text-align: right;
     margin-top: 12.5px;
+    display: flex;
+  }
+
+  .CartCount{
+    position: relative;
+    border-radius: 5px;
+    background: red;
+    line-height: ;
+    padding: 8px;
+    margin: auto;
+    height: 15px;
+    text-align: center;
   }
 
   .TopBar-Cart > button{
     border: none;
     background: none;
+    margin: auto;
   }
 
   .Main-SearchBox{

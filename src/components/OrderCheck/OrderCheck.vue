@@ -24,7 +24,7 @@
 </template>
 
 <script>
-
+// import store from "../../Store/init"
 export default{
     name: 'OrderCheck',
     data(){
@@ -34,6 +34,9 @@ export default{
         }
     },
     methods:{
+        debugButton(){
+            console.log("YakYedHee")
+        },
         NumberChecker(){
             if (this.EnteredNum !== ""){
                 console.log("Your Parcel is on the way!")
@@ -50,7 +53,7 @@ export default{
                 this.OrderStatus = "Not Ship Yet"
             }
         }
-    }
+    },
 }
 
 </script>
