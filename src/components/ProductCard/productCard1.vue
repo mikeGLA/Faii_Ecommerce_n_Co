@@ -1,5 +1,5 @@
 <template>
-    <div class="Card-Index" v-for="(NamePro) in ProductData" :key="NamePro">
+    <div class="Card-Index" v-for="(NamePro) in this.$store.state.ProductData" :key="NamePro">
         <div class="Product-Picture">
             <img :src="require('../../assets/TestCard.jpg')" :width="120" :height="120">
         </div>
@@ -17,34 +17,14 @@ export default {
     name: 'productCard1',
     data(){
       return{
-        inCartCounting: 0,
-        ProductData:[
-            {
-                ProductName:"Hot Glue1",
-                ProductPrice: 40,
-            },
-            {
-                ProductName:"Hot Glue2",
-                ProductPrice: 35,
-            },
-            {
-                ProductName:"Hot Glue3",
-                ProductPrice: 30,
-            },
-            {
-                ProductName:"Hot Glue4",
-                ProductPrice: 25,
-            },
-            {
-                ProductName:"Hot Glue5",
-                ProductPrice: 20,
-            }
-        ],
+        inCartCounting: 0
       }
     },
     methods:{
         addCart(){
             this.$store.commit("increment")
+            this.CountInCart++
+            console.log(this.ProductData.CountInCart)
         },
         RemoveCart(){
             this.$store.commit("decrement")
@@ -75,6 +55,7 @@ export default {
         background: rgb(137, 203, 255);
         width: 100px;
         margin: auto;
+        border-radius: 10px;
     }
 
     .Product-Rem{
@@ -82,5 +63,6 @@ export default {
         background: red;
         width: 100px;
         margin: auto;
+        border-radius: 10px;
     }
 </style>

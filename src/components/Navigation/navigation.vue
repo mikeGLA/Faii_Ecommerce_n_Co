@@ -13,6 +13,7 @@
                     <img :src="require('@/assets/ShoppingCart_White.png')" :width="40" :height="40">
                 </router-link>
             </button>
+            <div class="CartCount" v-if="this.$store.state.itemInCart > 0">{{this.$store.state.itemInCart}}</div>
         </div>
         <div class="NavigationBar-OrderCheck">
             <button :class="OrderCssControl" @click="OrderButtonClicked">
@@ -111,6 +112,20 @@ export default {
         /* width: 70px;
         text-align: center; */
         margin: auto;
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    .CartCount{
+        position: absolute;
+        border-radius: 5px;
+        background: red;
+        width: 20px;
+        /* padding: 8px; */
+        /* margin: auto; */
+        height: auto;
+        text-align: center;
+        font-weight: bold;
     }
 
     .CartButton{
