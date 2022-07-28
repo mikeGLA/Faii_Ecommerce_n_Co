@@ -24,12 +24,27 @@ export default {
         addCart(){
             this.$store.commit("increment")
             this.CountInCart++
-            console.log(this.ProductData.CountInCart)
+            // console.log(this.ProductData.CountInCart)
+            this.$store.state.ProductData.forEach((item)=>{
+            console.log(item.Ref)
+            })
         },
         RemoveCart(){
             this.$store.commit("decrement")
+            this.$store.state.ProductData.forEach((item)=>{
+            console.log(item.Ref)
+            })
+        },
+        checker(){
+            this.$store.state.ProductData.forEach((item)=>{
+                console.log(item.Ref)
+            })
         }
     },
+    mounted(){
+        this.checker
+    }
+    
     
 }
 

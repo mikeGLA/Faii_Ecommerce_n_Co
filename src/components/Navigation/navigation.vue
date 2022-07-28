@@ -17,7 +17,7 @@
         </div>
         <div class="NavigationBar-OrderCheck">
             <button :class="OrderCssControl" @click="OrderButtonClicked">
-                <router-link to="/ordercheck">
+                <router-link to="/contactform">
                     <img :src="require('../../assets/OrderTrack_White.png')" :width="40" :height="40">
                 </router-link>
             </button>

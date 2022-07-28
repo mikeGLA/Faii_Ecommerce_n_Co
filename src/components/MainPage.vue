@@ -60,7 +60,15 @@ export default {
       this.activeButton1 = "NonSelectedButton";
       this.activeButton2 = "NonSelectedButton";
       this.activeButton3 = "SelectedButtonCss";
+    },
+    checker(){
+    this.$store.state.ProductData.forEach((item)=>{
+        console.log(item.ProductName)
+      })
     }
+  },
+  mounted(){
+    this.checker()
   }
 }
 </script>

@@ -8,23 +8,27 @@ const store = createStore({
             {
                 ProductName:"Hot Glue1",
                 ProductPrice: 40,
-                CountInCart: 0
+                Ref: 1
             },
             {
                 ProductName:"Hot Glue2",
                 ProductPrice: 35,
+                Ref: 2
             },
             {
                 ProductName:"Hot Glue3",
                 ProductPrice: 30,
+                Ref: 3
             },
             {
                 ProductName:"Hot Glue4",
                 ProductPrice: 25,
+                Ref: 4
             },
             {
                 ProductName:"Hot Glue5",
                 ProductPrice: 20,
+                Ref: 5
             }
         ],
     },
@@ -38,7 +42,7 @@ const store = createStore({
                 this.state.itemInCart = 0
             }
             console.log(this.state.debugGB)
-        }
+        },
     }
 })
 
