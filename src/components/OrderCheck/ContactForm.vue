@@ -14,22 +14,22 @@
         </div>
         <div><h5>Select the Product you Interested</h5></div>
         <div class="Product-Group" >
-            <div :class="NijiCC" @click="NijiSelect">
+            <div :class="NijiCC" @click="NijiSelect()">
                 <img src="../../assets/Niji_L.jpg" :width="150" :height="150">
-                <input class="NijiInput" type="checkbox" v-model="this.formData.box1">
+                <!-- <input class="NijiInput" type="checkbox" v-model="this.formData.box1"> -->
                 <div>NiJi</div>
             </div>
-            <div class="Selected-Ebond" >
+            <div :class="EbondCC" @click="EbondSelect()">
                 <img src="../../assets/E_L.jpg" :width="150" :height="150">
                 <!-- <input type="checkbox" v-model="this.formData.box2"> -->
                 <div>E-Bond</div>
             </div>
-            <div class="Selected-SuperB" >
+            <div :class="SuperBCC" @click="SuperBSelect()">
                 <img src="../../assets/B_L.jpg" :width="150" :height="150">
                 <!-- <input type="checkbox" v-model="this.formData.box4"> -->
                 <div>Super B</div>
             </div>
-            <div class="Selected-NineNineNine" >
+            <div :class="NineNineNineCC" @click="NineNineNineSelect()">
                 <img src="../../assets/999_L.jpg" :width="150" :height="150">
                 <!-- <input type="checkbox" v-model="this.formData.box3"> -->
                 <div>999</div>
@@ -61,10 +61,10 @@ export default{
                 box4:false,
                 box5:false,
             },
-            NijiCC: "",
-            EbondCC: "",
-            SuperBCC: "",
-            NineNineNineCC: "",
+            NijiCC: "Selected-Niji",
+            EbondCC: "Selected-Ebond",
+            SuperBCC: "Selected-SuperB",
+            NineNineNineCC: "Selected-NineNineNine",
         }
     },
     methods:{
@@ -79,32 +79,68 @@ export default{
             this.formData.box3=false;
             this.formData.box4=false;
             this.formData.box5=false;
-            this.formData.NijiCC= "";
-            this.formData.EbondCC= "";
-            this.formData.SuperBCC= "";
-            this.formData.NineNineNineCC= "";
+            this.NijiCC= "Selected-Niji";
+            this.EbondCC= "Selected-Ebond";
+            this.SuperBCC= "Selected-SuperB";
+            this.NineNineNineCC= "Selected-NineNineNine";
 
         },
         debugSubmit(){
-            console.log(this.formData)
+            if(this.formData.firstName != "" && 
+            this.formData.lastName != "" &&
+            this.formData.phoneNumber != "" &&
+            this.formData != ""){
+                console.log(this.formData) 
+            }else{alert("Please Fill All Fill Form")}
+
         },
         NijiSelect(){
-            this.NijiCC= "Selected-Niji-Active",
-            // this.formData.box1=true,
-            console.log("TestNiji")
-            console.log(this.formData.box1)
+            if(this.NijiCC === "Selected-Niji"){
+                this.NijiCC = "Selected-Niji-Active";
+                this.formData.box1 = true;
+            }
+            else if(this.NijiCC === "Selected-Niji-Active"){
+                this.NijiCC = "Selected-Niji";
+                this.formData.box1 = false;
+            }else{console.log("error1")}
+            // console.log("TestNiji")
+            // console.log(this.formData.box1)
         },
         EbondSelect(){
-            this.EbondCC= "Selected-Ebond-Active";
-            // this.formData.box2=true;
+            if(this.EbondCC === "Selected-Ebond"){
+                this.EbondCC = "Selected-Ebond-Active";
+                this.formData.box2 = true;
+            }
+            else if(this.EbondCC === "Selected-Ebond-Active"){
+                this.EbondCC = "Selected-Ebond";
+                this.formData.box2 = false;
+            }else{console.log("error2")}
+            // console.log("TestEbond")
+            // console.log(this.formData.box2)
         },
         SuperBSelect(){
-            this.SuperBCC= "Selected-SuperB-Active";
-            // this.formData.box2=true;
+            if(this.SuperBCC === "Selected-SuperB"){
+                this.SuperBCC = "Selected-SuperB-Active";
+                this.formData.box3 = true;
+            }
+            else if(this.SuperBCC === "Selected-SuperB-Active"){
+                this.SuperBCC = "Selected-SuperB";
+                this.formData.box3 = false;
+            }else{console.log("error3")}
+            // console.log("TestSuperB")
+            // console.log(this.formData.box3)
         },
         NineNineNineSelect(){
-            this.NineNineNineCC= "Selected-NineNineNine-Active";
-            // this.formData.box2=true;
+            if(this.NineNineNineCC === "Selected-NineNineNine"){
+                this.NineNineNineCC = "Selected-NineNineNine-Active";
+                this.formData.box4 = true;
+            }
+            else if(this.NineNineNineCC === "Selected-NineNineNine-Active"){
+                this.NineNineNineCC = "Selected-NineNineNine";
+                this.formData.box4 = false;
+            }else{console.log("error4")}
+            // console.log("TestNineNineNine")
+            // console.log(this.formData.box4)
         }
     }
 }
@@ -162,11 +198,18 @@ export default{
         justify-items: center;
         gap: 10px;
     }
-
-    .NijiInput{
-        display: none;
+    .Selected-Niji{
+        margin: 5px;
     }
-
+    .Selected-Ebond{
+        margin: 5px;
+    }
+    .Selected-SuperB{
+        margin: 5px;
+    }
+    .Selected-NineNineNine{
+        margin: 5px;
+    }
     .Selected-Niji-Active{
         border: 5px solid rgb(137, 203, 255);
         background: rgb(137, 203, 255);
