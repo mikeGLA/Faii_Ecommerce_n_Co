@@ -13,15 +13,27 @@
             <input class="Input-Box" type="text" placeholder="Email" v-model="this.formData.emailAddress" required>
         </div>
         <div><h5>Select the Product you Interested</h5></div>
-        <div>
-            <img src="../../assets/AboutUs_Black.png" :width="40" :height="40">
-            <input type="checkbox" v-model="this.formData.box1">
-            <img src="../../assets/AboutUs_Black.png" :width="40" :height="40">
-            <input type="checkbox" v-model="this.formData.box2">
-            <img src="../../assets/AboutUs_Black.png" :width="40" :height="40">
-            <input type="checkbox" v-model="this.formData.box3">
-            <img src="../../assets/AboutUs_Black.png" :width="40" :height="40">
-            <input type="checkbox" v-model="this.formData.box4">
+        <div class="Product-Group" >
+            <div :class="NijiCC" @click="NijiSelect">
+                <img src="../../assets/Niji_L.jpg" :width="150" :height="150">
+                <input class="NijiInput" type="checkbox" v-model="this.formData.box1">
+                <div>NiJi</div>
+            </div>
+            <div class="Selected-Ebond" >
+                <img src="../../assets/E_L.jpg" :width="150" :height="150">
+                <!-- <input type="checkbox" v-model="this.formData.box2"> -->
+                <div>E-Bond</div>
+            </div>
+            <div class="Selected-SuperB" >
+                <img src="../../assets/B_L.jpg" :width="150" :height="150">
+                <!-- <input type="checkbox" v-model="this.formData.box4"> -->
+                <div>Super B</div>
+            </div>
+            <div class="Selected-NineNineNine" >
+                <img src="../../assets/999_L.jpg" :width="150" :height="150">
+                <!-- <input type="checkbox" v-model="this.formData.box3"> -->
+                <div>999</div>
+            </div>
         </div>
         <div class="ContactForm-Submit-Button">
             <button class="Submit-Button" @click="debugSubmit()">Submit</button>
@@ -48,7 +60,11 @@ export default{
                 box3:false,
                 box4:false,
                 box5:false,
-            }
+            },
+            NijiCC: "",
+            EbondCC: "",
+            SuperBCC: "",
+            NineNineNineCC: "",
         }
     },
     methods:{
@@ -63,9 +79,32 @@ export default{
             this.formData.box3=false;
             this.formData.box4=false;
             this.formData.box5=false;
+            this.formData.NijiCC= "";
+            this.formData.EbondCC= "";
+            this.formData.SuperBCC= "";
+            this.formData.NineNineNineCC= "";
+
         },
         debugSubmit(){
             console.log(this.formData)
+        },
+        NijiSelect(){
+            this.NijiCC= "Selected-Niji-Active",
+            // this.formData.box1=true,
+            console.log("TestNiji")
+            console.log(this.formData.box1)
+        },
+        EbondSelect(){
+            this.EbondCC= "Selected-Ebond-Active";
+            // this.formData.box2=true;
+        },
+        SuperBSelect(){
+            this.SuperBCC= "Selected-SuperB-Active";
+            // this.formData.box2=true;
+        },
+        NineNineNineSelect(){
+            this.NineNineNineCC= "Selected-NineNineNine-Active";
+            // this.formData.box2=true;
         }
     }
 }
@@ -114,5 +153,34 @@ export default{
         margin-left: 20px;
     }
 
+    .Product-Group{
+        display: flex;
+        /* width: 100px; */
+        flex-wrap: wrap;
+        /* line-height: 40px; */
+        justify-content: center;
+        justify-items: center;
+        gap: 10px;
+    }
 
+    .NijiInput{
+        display: none;
+    }
+
+    .Selected-Niji-Active{
+        border: 5px solid rgb(137, 203, 255);
+        background: rgb(137, 203, 255);
+    }
+    .Selected-Ebond-Active{
+        border: 5px solid rgb(137, 203, 255);
+        background: rgb(137, 203, 255);
+    }
+    .Selected-SuperB-Active{
+        border: 5px solid rgb(137, 203, 255);
+        background: rgb(137, 203, 255);
+    }
+    .Selected-NineNineNine-Active{
+        border: 5px solid rgb(137, 203, 255);
+        background: rgb(137, 203, 255);
+    }
 </style>
