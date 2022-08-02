@@ -8,32 +8,53 @@
         <div class="ContactForm-Input-Index">
             <input class="Input-Box" type="text" placeholder="First Name" v-model="this.formData.firstName" required>
             <input class="Input-Box" type="text" placeholder="Last Name" v-model="this.formData.lastName" required>
-            <input class="Input-Box" type="text" placeholder="Company Name" v-model="this.formData.companyName">
+            <input class="Input-Box-Not-Required" type="text" placeholder="Company Name" v-model="this.formData.companyName">
             <input class="Input-Box" type="number" placeholder="Phone Number" v-model="this.formData.phoneNumber" required>
-            <input class="Input-Box" type="text" placeholder="Email" v-model="this.formData.emailAddress" required>
+            <input class="Input-Box" placeholder="Email Address" type="email" v-model="this.formData.emailAddress" required>
+            <input class="Input-Box-Not-Required" placeholder="Line ID" type="text" v-model="this.formData.lineId">
         </div>
         <div><h5>Select the Product you Interested</h5></div>
         <div class="Product-Group" >
-            <div :class="NijiCC" @click="NijiSelect()">
+            <!-- Card to select for Niji -->
+            <div class="Selected-Niji" v-show="this.formData.box1 === false">
                 <img src="../../assets/Niji_L.jpg" :width="150" :height="150">
-                <!-- <input class="NijiInput" type="checkbox" v-model="this.formData.box1"> -->
                 <div>NiJi</div>
             </div>
-            <div :class="EbondCC" @click="EbondSelect()">
+            <div class="Selected-Niji-Active" v-show="this.formData.box1 === true">
+                <img src="../../assets/Niji_L.jpg" :width="150" :height="150">
+                <div>NiJi</div>
+            </div>
+            <input @click="this.formData.box1 = !this.formData.box1" v-model="this.formData.box1" type="checkbox">
+            <!-- Card to select for ebond -->
+            <div class="Selected-Ebond" v-show="this.formData.box2 === false">
                 <img src="../../assets/E_L.jpg" :width="150" :height="150">
-                <!-- <input type="checkbox" v-model="this.formData.box2"> -->
-                <div>E-Bond</div>
+                <div>NiJi</div>
             </div>
-            <div :class="SuperBCC" @click="SuperBSelect()">
-                <img src="../../assets/B_L.jpg" :width="150" :height="150">
-                <!-- <input type="checkbox" v-model="this.formData.box4"> -->
-                <div>Super B</div>
+            <div class="Selected-Ebond-Active" v-show="this.formData.box2 === true">
+                <img src="../../assets/E_L.jpg" :width="150" :height="150">
+                <div>NiJi</div>
             </div>
-            <div :class="NineNineNineCC" @click="NineNineNineSelect()">
+            <input @click="this.formData.box2 = !this.formData.box2" v-model="this.formData.box2" type="checkbox">
+            <!-- Card to select for 999 -->
+            <div class="Selected-NineNineNine" v-show="this.formData.box3 === false">
                 <img src="../../assets/999_L.jpg" :width="150" :height="150">
-                <!-- <input type="checkbox" v-model="this.formData.box3"> -->
                 <div>999</div>
             </div>
+            <div class="Selected-NineNineNine-Active" v-show="this.formData.box3 === true">
+                <img src="../../assets/999_L.jpg" :width="150" :height="150">
+                <div>999</div>
+            </div>
+            <input @click="this.formData.box3 = !this.formData.box3" v-model="this.formData.box3" type="checkbox">
+            <!-- Card to select for super b -->
+            <div class="Selected-SuperB" v-show="this.formData.box4 === false">
+                <img src="../../assets/B_L.jpg" :width="150" :height="150">
+                <div>Super B</div>
+            </div>
+            <div class="Selected-SuperB-Active"  v-show="this.formData.box4 === true">
+                <img src="../../assets/B_L.jpg" :width="150" :height="150">
+                <div>Super B</div>
+            </div>
+            <input @click="this.formData.box4 = !this.formData.box4" v-model="this.formData.box4" type="checkbox">
         </div>
         <div class="ContactForm-Submit-Button">
             <button class="Submit-Button" @click="debugSubmit()">Submit</button>
@@ -55,16 +76,13 @@ export default{
                 companyName:"",
                 phoneNumber:"",
                 emailAddress:"",
+                lineId:"",
                 box1:false,
                 box2:false,
                 box3:false,
                 box4:false,
-                box5:false,
-            },
-            NijiCC: "Selected-Niji",
-            EbondCC: "Selected-Ebond",
-            SuperBCC: "Selected-SuperB",
-            NineNineNineCC: "Selected-NineNineNine",
+                // box5:false,
+            }
         }
     },
     methods:{
@@ -74,74 +92,25 @@ export default{
             this.formData.companyName="";
             this.formData.phoneNumber="";
             this.formData.emailAddress="";
+            this.formData.lineId="";
             this.formData.box1=false;
             this.formData.box2=false;
             this.formData.box3=false;
             this.formData.box4=false;
-            this.formData.box5=false;
-            this.NijiCC= "Selected-Niji";
-            this.EbondCC= "Selected-Ebond";
-            this.SuperBCC= "Selected-SuperB";
-            this.NineNineNineCC= "Selected-NineNineNine";
-
+            // this.formData.box5=false;
         },
         debugSubmit(){
             if(this.formData.firstName != "" && 
             this.formData.lastName != "" &&
             this.formData.phoneNumber != "" &&
-            this.formData != ""){
+            this.formData.emailAddress != ""){
                 console.log(this.formData) 
             }else{alert("Please Fill All Fill Form")}
 
         },
-        NijiSelect(){
-            if(this.NijiCC === "Selected-Niji"){
-                this.NijiCC = "Selected-Niji-Active";
-                this.formData.box1 = true;
-            }
-            else if(this.NijiCC === "Selected-Niji-Active"){
-                this.NijiCC = "Selected-Niji";
-                this.formData.box1 = false;
-            }else{console.log("error1")}
-            // console.log("TestNiji")
-            // console.log(this.formData.box1)
-        },
-        EbondSelect(){
-            if(this.EbondCC === "Selected-Ebond"){
-                this.EbondCC = "Selected-Ebond-Active";
-                this.formData.box2 = true;
-            }
-            else if(this.EbondCC === "Selected-Ebond-Active"){
-                this.EbondCC = "Selected-Ebond";
-                this.formData.box2 = false;
-            }else{console.log("error2")}
-            // console.log("TestEbond")
-            // console.log(this.formData.box2)
-        },
-        SuperBSelect(){
-            if(this.SuperBCC === "Selected-SuperB"){
-                this.SuperBCC = "Selected-SuperB-Active";
-                this.formData.box3 = true;
-            }
-            else if(this.SuperBCC === "Selected-SuperB-Active"){
-                this.SuperBCC = "Selected-SuperB";
-                this.formData.box3 = false;
-            }else{console.log("error3")}
-            // console.log("TestSuperB")
-            // console.log(this.formData.box3)
-        },
-        NineNineNineSelect(){
-            if(this.NineNineNineCC === "Selected-NineNineNine"){
-                this.NineNineNineCC = "Selected-NineNineNine-Active";
-                this.formData.box4 = true;
-            }
-            else if(this.NineNineNineCC === "Selected-NineNineNine-Active"){
-                this.NineNineNineCC = "Selected-NineNineNine";
-                this.formData.box4 = false;
-            }else{console.log("error4")}
-            // console.log("TestNineNineNine")
-            // console.log(this.formData.box4)
-        }
+    },
+    mounted(){
+        console.log(this.formData)
     }
 }
 
@@ -150,7 +119,7 @@ export default{
 <style>
     .ContactForm-Index{
         text-align: center;
-        height: 900px;
+        height: 1300px;
     }
 
     .Subject-Text{
@@ -167,6 +136,14 @@ export default{
     .Input-Box{
         height: 30px;
         border-radius: 10px;
+    }
+    .Input-Box-Not-Required{
+        height: 30px;
+        border-radius: 10px;
+    }
+    .Input-Box::placeholder{
+        color: red;
+        font-weight: bold;
     }
 
     .ContactForm-Submit-Button{

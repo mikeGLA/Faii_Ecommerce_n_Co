@@ -3,7 +3,7 @@ import { createStore } from "vuex";
 const store = createStore({
     state: {
         itemInCart: 0,
-        debugGB: "YakYedHeeGB",
+        debugGB: "GlobalStoreDebug",
         ProductData:[
             {
                 ProductName:"Hot Glue1",

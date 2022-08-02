@@ -44,7 +44,7 @@ export default {
   },
   methods:{
     debugButton(){
-      console.log("YakYedHee")
+      console.log("MainpageDebug")
     },
     setButtonActive1(){
       this.activeButton1 = "SelectedButtonCss";
